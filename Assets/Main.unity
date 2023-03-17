@@ -1514,8 +1514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddd33d492a44f44680dffb2f6368a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1846809827181286669, guid: a7a8e5256195e8946b7d84d250345fd4,
-    type: 3}
+  projectile: {fileID: 1155535608744270, guid: 45fc27cac2fc6024e930c5380b019f44, type: 3}
   shootPoint: {fileID: 1656700388}
   turnspeed: 2
 --- !u!1 &870732364
@@ -3172,7 +3171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7669529301154764570}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.17, z: -45.1}
+  m_LocalPosition: {x: 0, y: 1.17, z: 0.67}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7669529302273980216}

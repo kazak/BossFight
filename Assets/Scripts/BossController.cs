@@ -30,7 +30,7 @@ public class BossController : MonoBehaviour
                 transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
             }
             //Set a random value between a range we set to choose our attack type.
-            if (!anim.GetBool("isRunning") && attackType == 0)
+            if (!anim.GetBool("isUltimate") && attackType == 0)
             {
                 attackType = Random.Range(1, attackRange + 1);
             }
@@ -46,14 +46,14 @@ public class BossController : MonoBehaviour
         {
             if (direction.magnitude > 3f)
             {
-                anim.SetBool("isRunning", true);
+                anim.SetBool("isUltimate", true);
                 attackType = 0;
                 anim.SetInteger("isAttacking", 0);
             }
             //If we are close enough, do an attack.
             else
             {
-                anim.SetBool("isRunning", false);
+                anim.SetBool("isUltimate", false);
                 anim.SetInteger("isAttacking", attackType);
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.1f)
                 {
@@ -75,7 +75,7 @@ public class BossController : MonoBehaviour
         }
         else
         {
-            anim.SetBool("isRunning", false);
+            anim.SetBool("isUltimate", false);
             anim.SetInteger("isAttacking", 0);
         }
     }

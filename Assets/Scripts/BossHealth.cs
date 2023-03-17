@@ -1,7 +1,8 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using UnityEngine;
 
-public class BossHealth : MonoBehaviour
+public class BossHealth : MonoBehaviour 
 {
     public int health = 5000;
     public GameObject mutantMesh;
@@ -20,8 +21,7 @@ public class BossHealth : MonoBehaviour
     public void Update()
     {
         if (health <= 0)
-        {
-            anim.SetBool("isDead", true);
+        {   anim.SetBool("isDead", true);
         }
     }
 

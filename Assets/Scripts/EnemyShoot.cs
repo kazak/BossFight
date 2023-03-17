@@ -16,12 +16,12 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField]
     
     float turnspeed = 2;
-
+    private Animator anim;
     float fireRate = 0.2f;
     private void Start ( )
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-
+        anim = GetComponent<Animator>();
     }
     private void Update ()
     {
@@ -32,7 +32,7 @@ public class EnemyShoot : MonoBehaviour
         
         transform.rotation = Quaternion.Slerp(target.rotation, Quaternion.LookRotation(direction), turnspeed * Time.deltaTime);
         
-        if ( fireRate <= 0)
+        if ( fireRate <= 0 )
         {
             fireRate = 2f;
             Shoot();
