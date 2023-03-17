@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638145863677269155
-    m_Hash: 3419915344
+      ticks: 638146113598690722
+    m_Hash: 3442026924
   m_LockFileStatus:
     m_FilePath: D:/BossFightRelease/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638145863827071428
-    m_Hash: 238045148
+      ticks: 638146113598690722
+    m_Hash: 102903577
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:

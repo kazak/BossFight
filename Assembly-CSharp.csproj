@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{CCD8BE1B-1A12-F429-0B98-D7CB0EBBE0FB}</ProjectGuid>
+    <ProjectGuid>{68FAB18B-B1EB-18A4-8CB5-1B511584AA2A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -56,26 +56,26 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Professional\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\ProjectileMovement.cs" />
     <Compile Include="Assets\Scripts\WeakSpot.cs" />
+    <Compile Include="Assets\MissileController.cs" />
     <Compile Include="Assets\Scripts\BulletHit.cs" />
+    <Compile Include="Assets\Scripts\EnemyProjectile.cs" />
     <Compile Include="Assets\Scripts\EnemyDamage.cs" />
     <Compile Include="Assets\Scripts\DestroyEffect.cs" />
     <Compile Include="Assets\Scripts\EnemyShoot.cs" />
     <Compile Include="Assets\Scripts\PlayerDamage.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\MoveToPosition.cs" />
-    <Compile Include="Assets\Scripts\BossController.cs" />
     <Compile Include="Assets\Scripts\CharacterMovement.cs" />
     <Compile Include="Assets\Scripts\ActivateProjectile.cs" />
     <Compile Include="Assets\Scripts\MenuScript.cs" />
-    <Compile Include="Assets\Scripts\BossHealth.cs" />
     <Compile Include="Assets\Scripts\SendDamage.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
-    <Compile Include="Assets\Scripts\EnemyProjectile.cs" />
-    <Compile Include="Assets\MissileController.cs" />
     <Compile Include="Assets\Scripts\Wall.cs" />
+    <Compile Include="Assets\Scripts\BossController.cs" />
+    <Compile Include="Assets\Scripts\BossHealth.cs" />
+    <Compile Include="Assets\Scripts\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
