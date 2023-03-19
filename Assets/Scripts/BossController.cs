@@ -8,20 +8,23 @@ public class BossController : MonoBehaviour
     private int attackType;
     private bool setForce = false;
     private Vector3 direction;
-
-
+    
+   
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         anim = GetComponent<Animator>();
+        
     }
 
 
     private void Update()
     {
+        
         if (!anim.GetBool("isDead"))
         {
+            float distance = Vector3.Distance(transform.position, player.position);
             //Find the direction
             direction = player.position - transform.position;
             //If the boss is far enough away from the player, rotate to look at the player.
@@ -30,12 +33,23 @@ public class BossController : MonoBehaviour
                 transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
             }
             //Set a random value between a range we set to choose our attack type.
-            if (!anim.GetBool("isUltimate") && attackType == 0)
+           
+            if (distance < 5f )
             {
-                attackType = Random.Range(1, attackRange + 1);
+                attackType = 3;
+                // attackType = Random.Range(1, attackRange + 1);
+                
+            }
+            if (distance > 5 && distance <20 )
+            {   //Jump
+                attackType = 2;
+                anim.SetInteger("isAttacking", 2);
+                
             }
         }
+        
     }
+
 
 
     // Update is called once per frame
@@ -44,16 +58,17 @@ public class BossController : MonoBehaviour
         //If the boss is too far from the player, run towards them.
         if (!anim.GetBool("isDead"))
         {
+            
             if (direction.magnitude > 3f)
             {
-                anim.SetBool("isUltimate", true);
+                anim.SetBool("isRunning", true);
                 attackType = 0;
                 anim.SetInteger("isAttacking", 0);
             }
             //If we are close enough, do an attack.
             else
             {
-                anim.SetBool("isUltimate", false);
+                anim.SetBool("isRunning", false);
                 anim.SetInteger("isAttacking", attackType);
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.1f)
                 {
@@ -75,8 +90,13 @@ public class BossController : MonoBehaviour
         }
         else
         {
-            anim.SetBool("isUltimate", false);
+            anim.SetBool("isRunning", false);
             anim.SetInteger("isAttacking", 0);
+            
         }
+    }
+    void AttackPlayer()
+    {
+        anim.SetInteger("isAttacking", 1);
     }
 }

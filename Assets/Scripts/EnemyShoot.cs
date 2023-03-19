@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class EnemyShoot : MonoBehaviour
 {
@@ -16,29 +18,45 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField]
     
     float turnspeed = 2;
-    private Animator anim;
-    float fireRate = 0.2f;
+
+    [SerializeField]
+    Slider slider;
+
+    float fireRate = 5f;
+
+    
+    BossController bossController = new BossController();
     private void Start ( )
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        anim = GetComponent<Animator>();
+       
+        
     }
     private void Update ()
     {
+        
+        float distance = Vector3.Distance(transform.position, target.position);
         fireRate -= Time.deltaTime;
         
         Vector3 direction = transform.position - target.position;
         
         
         transform.rotation = Quaternion.Slerp(target.rotation, Quaternion.LookRotation(direction), turnspeed * Time.deltaTime);
+
+
+        Debug.Log(distance);
         
-        if ( fireRate <= 0 )
+        if (distance > 5 && distance < 20 && slider.value >0 )
         {
-            fireRate = 2f;
-            Shoot();
+            if (fireRate <= 0)
+            {
+                fireRate = 5f;
+                Shoot();
+            }
+
         }
-       
     }
+
     void Shoot() 
     { 
         Instantiate (projectile,shootPoint.position,shootPoint.rotation);

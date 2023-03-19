@@ -1,16 +1,23 @@
 ﻿
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour 
-{
-    public int health = 5000;
+{   
+    public float health = 5000;
+    
+    public float maxhealth = 5000;
     public GameObject mutantMesh;
     public Texture[] texture = new Texture[2];
     private int texRef;
     private Animator anim;
 
+    public Slider slider;
+    public Text text;
+  
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +27,23 @@ public class BossHealth : MonoBehaviour
 
     public void Update()
     {
+        text.text = $"{health}/{maxhealth}";
+        slider.maxValue = maxhealth;
+        slider.value = health;
+
+        //Debug.Log(health);
+        
         if (health <= 0)
-        {   anim.SetBool("isDead", true);
+        {   
+            health = 0; 
+            anim.SetBool("isDead", true);
+            
         }
     }
 
+    
+    
+   
 
     public void ReceiveCollision(ref Collision col, ref string name)
     {
