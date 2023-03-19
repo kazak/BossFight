@@ -8,7 +8,7 @@ public class BossController : MonoBehaviour
     private int attackType;
     private bool setForce = false;
     private Vector3 direction;
-    
+    private bool Stunned = false;
    
     // Start is called before the first frame update
     void Start()
@@ -35,18 +35,25 @@ public class BossController : MonoBehaviour
             //Set a random value between a range we set to choose our attack type.
            
             if (distance < 5f )
-            {
+            {   
                 attackType = 3;
                 // attackType = Random.Range(1, attackRange + 1);
                 
             }
             if (distance > 5 && distance <20 )
-            {   //Jump
+            {   //Jump Attack
                 attackType = 2;
                 anim.SetInteger("isAttacking", 2);
+                Stunned = true;
                 
             }
+            if (Stunned == true)
+            {   //Stunned after JumpAttack
+                anim.SetBool("isStunned", true);
+                Stunned = false;
+            }
         }
+
         
     }
 
