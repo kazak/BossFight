@@ -8,6 +8,8 @@ public class MissileController : MonoBehaviour
 {
     private Animator anim;
     public Transform target;
+    public GameObject explosive;
+    public GameObject exhaust;
     public enum Missile_state
     {
         idle,
@@ -25,13 +27,14 @@ public class MissileController : MonoBehaviour
    
     Vector3 start_pos;
     Renderer bools;
-    private void Start()
-    { 
+    void Start()
+    {
+        exhaust.SetActive(false);
         anim = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
         start_pos = gameObject.transform.position;
     }
-    private void Update()
+   void Update()
     {
        
         bools = GetComponent<MeshRenderer>();
@@ -43,14 +46,20 @@ public class MissileController : MonoBehaviour
                 case Missile_state.idle:
 
                     if (timer <= 2) { timer += Time.deltaTime; }
-                    if (timer > 2) { missile_state_t = Missile_state.start; }
+                    if (timer > 2) { 
+                    missile_state_t = Missile_state.start; 
+                    Instantiate(explosive, gameObject.transform.position, Quaternion.identity);
+                    }
+                    
                    break;
                 case Missile_state.start:
                     bools.enabled = true;
                     float start_dist = Vector3.Distance(gameObject.transform.position, start_pos);
                     gameObject.transform.Translate(Vector3.up * speed_move * Time.deltaTime);
-                    if (start_dist >= 5)
+                        
+                if (start_dist >= 5)
                     {
+                    exhaust.SetActive(true);
                         missile_state_t = Missile_state.fly;
                     }
                  
@@ -71,6 +80,7 @@ public class MissileController : MonoBehaviour
                     break;
 
                 case Missile_state.end:
+                    Instantiate(explosive, gameObject.transform.position, Quaternion.identity);
                     bools.enabled = true;
                     Destroy(gameObject);
 

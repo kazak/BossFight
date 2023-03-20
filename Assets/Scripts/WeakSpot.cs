@@ -17,5 +17,6 @@ public class WeakSpot : MonoBehaviour
     {
         string name = gameObject.name;
         bossHealth.ReceiveCollision(ref col, ref name);
+       
     }
 }

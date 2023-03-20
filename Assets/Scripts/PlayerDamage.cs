@@ -13,6 +13,7 @@ public class PlayerDamage : MonoBehaviour
     }
     void ApplyDamage(int damage)
     {
+        
         //Checks we has attached a health panel and out health is greater than 0
         if (healthPanel != null && health > 0)
         {

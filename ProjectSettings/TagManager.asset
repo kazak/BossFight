@@ -6,6 +6,8 @@ TagManager:
   tags:
   - bullet
   - Slider
+  - LeftHand
+  - RightHand
   layers:
   - Default
   - TransparentFX

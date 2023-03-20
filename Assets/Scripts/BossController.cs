@@ -9,7 +9,9 @@ public class BossController : MonoBehaviour
     private bool setForce = false;
     private Vector3 direction;
     private bool Stunned = false;
-   
+    public GameObject mutantMesh;
+    public GameObject leftweak;
+    public GameObject rightweak;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +23,7 @@ public class BossController : MonoBehaviour
 
     private void Update()
     {
-        
+       
         if (!anim.GetBool("isDead"))
         {
             float distance = Vector3.Distance(transform.position, player.position);
@@ -33,25 +35,11 @@ public class BossController : MonoBehaviour
                 transform.LookAt(new Vector3(player.position.x, 0, player.position.z));
             }
             //Set a random value between a range we set to choose our attack type.
-           
-            if (distance < 5f )
-            {   
-                attackType = 3;
-                // attackType = Random.Range(1, attackRange + 1);
-                
+            if (!anim.GetBool("isStunned") && attackType == 0)
+            {
+                attackType = Random.Range(1, attackRange + 1);
             }
-            if (distance > 5 && distance <20 )
-            {   //Jump Attack
-                attackType = 2;
-                anim.SetInteger("isAttacking", 2);
-                Stunned = true;
-                
-            }
-            if (Stunned == true)
-            {   //Stunned after JumpAttack
-                anim.SetBool("isStunned", true);
-                Stunned = false;
-            }
+            
         }
 
         
@@ -65,17 +53,31 @@ public class BossController : MonoBehaviour
         //If the boss is too far from the player, run towards them.
         if (!anim.GetBool("isDead"))
         {
-            
-            if (direction.magnitude > 3f)
+            float distance = Vector3.Distance(transform.position, player.position);
+            if (distance < 5f)
             {
-                anim.SetBool("isRunning", true);
-                attackType = 0;
-                anim.SetInteger("isAttacking", 0);
+                attackType = 3;
+                // attackType = Random.Range(1, attackRange + 1);
+
             }
+            if (distance > 5 && distance < 20)
+            {   //Jump Attack
+                attackType = 2;
+                anim.SetInteger("isAttacking", 2);
+                Stunned = true;
+                if (Stunned == true)
+                {   //Stunned after JumpAttack
+                    anim.SetBool("isStunned", true);
+                    Stunned = false;
+                    attackType = 0;
+                }
+
+            }
+            
             //If we are close enough, do an attack.
             else
             {
-                anim.SetBool("isRunning", false);
+                anim.SetBool("isStunned", false);
                 anim.SetInteger("isAttacking", attackType);
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.1f)
                 {
@@ -97,10 +99,22 @@ public class BossController : MonoBehaviour
         }
         else
         {
-            anim.SetBool("isRunning", false);
+            anim.SetBool("isStunned", false);
             anim.SetInteger("isAttacking", 0);
             
         }
+    }
+    void WeakSpots()
+    {
+        
+        leftweak = GameObject.FindWithTag("LeftHand");
+        rightweak = GameObject.FindWithTag("RightHand");
+        
+    }
+    public void Close()
+    {
+        leftweak.gameObject.SetActive(false);
+        rightweak.gameObject.SetActive(false);
     }
     void AttackPlayer()
     {

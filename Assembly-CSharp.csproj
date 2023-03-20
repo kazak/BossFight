@@ -80,6 +80,7 @@
     <Compile Include="Assets\Scripts\SendDamage.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\Wall.cs" />
+    <Compile Include="Assets\WeakSpots.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AurynSky\Rockets Missiles and Bombs\READ ME.txt" />

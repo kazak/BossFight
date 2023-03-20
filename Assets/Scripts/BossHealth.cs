@@ -65,9 +65,13 @@ public class BossHealth : MonoBehaviour
         }
     }
 
+    
+
 
     private void OnCollisionEnter(Collision other)
     {
+        
+        
         if (other.gameObject.CompareTag("bullet"))
         {
             health -= 1;
