@@ -23,4 +23,5 @@ public class PlayerDamage : MonoBehaviour
             healthPanel.text = health.ToString();
         }
     }
+    
 }

@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\WeakSpots.cs" />
     <Compile Include="Assets\Scripts\ProjectileMovement.cs" />
     <Compile Include="Assets\Scripts\WeakSpot.cs" />
     <Compile Include="Assets\MissileController.cs" />
@@ -80,10 +81,14 @@
     <Compile Include="Assets\Scripts\SendDamage.cs" />
     <Compile Include="Assets\Scripts\MouseLook.cs" />
     <Compile Include="Assets\Scripts\Wall.cs" />
-    <Compile Include="Assets\WeakSpots.cs" />
+    <Compile Include="Assets\PlayerHealth.cs" />
+    <Compile Include="Assets\ErbGameArt\Random effects pack\Demo scenes\CameraHolder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\AurynSky\Rockets Missiles and Bombs\READ ME.txt" />
+    <None Include="Assets\ErbGameArt\Random effects pack\Shaders\BlackHole.shader" />
+    <None Include="Assets\ErbGameArt\Random effects pack\Shaders\Lava.shader" />
+    <None Include="Assets\ErbGameArt\Random effects pack\Prefabs\ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
