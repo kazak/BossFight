@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using UnityEditorInternal;
+
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MissileController : MonoBehaviour
 {
@@ -10,6 +8,9 @@ public class MissileController : MonoBehaviour
     public Transform target;
     public GameObject explosive;
     public GameObject exhaust;
+    public Image damageImage;
+    public Color damageColor;
+    float colorSmoothing = 6f;
     public enum Missile_state
     {
         idle,
@@ -27,6 +28,8 @@ public class MissileController : MonoBehaviour
    
     Vector3 start_pos;
     Renderer bools;
+    private float damageAmount = 10f;
+
     void Start()
     {
         exhaust.SetActive(false);
@@ -49,7 +52,8 @@ public class MissileController : MonoBehaviour
                     if (timer > 2) { 
                     missile_state_t = Missile_state.start; 
                     Instantiate(explosive, gameObject.transform.position, Quaternion.identity);
-                    }
+                    damageImage.color = Color.Lerp(damageImage.color, Color.clear, colorSmoothing * Time.deltaTime);
+                }
                     
                    break;
                 case Missile_state.start:
@@ -82,8 +86,10 @@ public class MissileController : MonoBehaviour
                 case Missile_state.end:
                     Instantiate(explosive, gameObject.transform.position, Quaternion.identity);
                     bools.enabled = true;
+                     PlayerHealth.singleton.PlayerDamage(damageAmount);
+                     damageImage.color = damageColor;
                     Destroy(gameObject);
-
+                    
                     break;
             }
         }

@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.SymbolStore;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -8,6 +11,14 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth;
     public float maxHealth = 100f;
     public bool isDead = false;
+    public Slider slider;
+    public Text text;
+    [Header ("Damage Screen")]
+    public Color damageColor;
+    public Image damageImage;
+    float colorSmoothing =6f;
+    bool isTakingDamage = false;
+   
     private void Awake()
     {
 
@@ -15,29 +26,53 @@ public class PlayerHealth : MonoBehaviour
     }
     void Start()
     {
-       
         currentHealth = maxHealth;
+        slider.value = maxHealth;
+        UpdateHealthCounter();
+        
     }
 
     
     void Update()
+    {   if(isTakingDamage)
+        {
+            damageImage.color = damageColor;
+
+        }
+        else
+        {
+            damageImage.color = Color.Lerp(damageImage.color, Color.clear, colorSmoothing * Time.deltaTime);
+        }
+        isTakingDamage = false;
+
+        
+    }
+    public void PlayerDamage(float damage)
+    {
+        if (damage >= currentHealth) 
+        {
+            isTakingDamage = false;
+            Dead();
+            
+        }
+        else
+        {   isTakingDamage = true;
+            currentHealth -= damage;
+            slider.value -= damage;
+        }
+        UpdateHealthCounter();
+    }
+    void UpdateHealthCounter()
     {
         if (currentHealth < 0)
         {
             currentHealth = 0;
         }
+        text.text = $"{currentHealth}/{maxHealth}";
+        slider.maxValue = maxHealth;
+        slider.value = currentHealth;
     }
-    public void PlayerDamage(float damage)
-    {
-        if (currentHealth > 0) 
-        { 
-            currentHealth -= damage;
-        }
-        else
-        {
-            Dead();
-        }
-    }
+    
     void Dead()
     {
         currentHealth = 0;

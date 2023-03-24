@@ -8,6 +8,8 @@ TagManager:
   - Slider
   - LeftHand
   - RightHand
+  - Laga
+  - Lava
   layers:
   - Default
   - TransparentFX

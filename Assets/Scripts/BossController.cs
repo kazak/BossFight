@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class BossController : MonoBehaviour
 {
@@ -16,10 +17,13 @@ public class BossController : MonoBehaviour
     public GameObject mutantMesh;
     public GameObject leftweak;
     public GameObject rightweak;
-    public float damageAmount = 35f;
+    [SerializeField]
+    private GameObject lava;
+    public float damageAmount = 10f;
     float posY;
     [SerializeField]
     float attackTime = 2f;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +35,9 @@ public class BossController : MonoBehaviour
 
     private void Update()
     {
-       
+        LavaEnable();
+        LavaDisable();
+
         if (!anim.GetBool("isDead"))
         {
             float distance = Vector3.Distance(transform.position, player.position);
@@ -46,14 +52,18 @@ public class BossController : MonoBehaviour
            
             //Set a random value between a range we set to choose our attack type.
             if (canAttack == true && attackType == 0 && !PlayerHealth.singleton.isDead)
-            {   
-                attackType = Random.Range(1, attackRange + 1);
-                if(distance < 12f) 
+            {
+                attackType = 2;
+                //attackType = Random.Range(1, attackRange + 1);
+                if(distance < 20f) 
                 { 
                     AttackPlayer();
+                    
                 }
+                
             }
-
+           
+       
         }
         else
         {
@@ -82,10 +92,14 @@ public class BossController : MonoBehaviour
             {   //Jump Attack
                 attackType = 2;
                 anim.SetInteger("isAttacking", 2);
+                
                 Stunned = true;
                 if (Stunned == true)
                     
-                {   //Stunned after JumpAttack
+                {
+                    
+                    
+                    //Stunned after JumpAttack
                     anim.SetBool("isStunned", true);
                     Stunned = false;
                     attackType = 0;
@@ -96,6 +110,7 @@ public class BossController : MonoBehaviour
             //If we are close enough, do an attack.
             else
             {
+                
                 anim.SetBool("isStunned", false);
                 anim.SetInteger("isAttacking", attackType);
                 if (anim.GetCurrentAnimatorStateInfo(0).normalizedTime < 0.1f)
@@ -118,6 +133,7 @@ public class BossController : MonoBehaviour
         }
         else
         {
+            
             anim.SetBool("isStunned", false);
             anim.SetInteger("isAttacking", 0);
             
@@ -156,5 +172,20 @@ public class BossController : MonoBehaviour
         PlayerHealth.singleton.PlayerDamage(damageAmount);
         yield return new WaitForSeconds(attackTime);
         canAttack = true;
+    }
+    public void LavaEnable()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            lava.SetActive(true);
+        }
+        
+    }
+    public void LavaDisable()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            lava.SetActive(false);
+        }
     }
 }
