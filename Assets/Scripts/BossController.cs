@@ -15,15 +15,16 @@ public class BossController : MonoBehaviour
     private bool Stunned = false;
     public bool canAttack = true; 
     public GameObject mutantMesh;
-    public GameObject leftweak;
-    public GameObject rightweak;
+    
     [SerializeField]
     private GameObject lava;
     public float damageAmount = 10f;
     float posY;
     [SerializeField]
     float attackTime = 2f;
-    
+    public float StunnedReload;
+    BossHealth bossHealth = new BossHealth();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +41,8 @@ public class BossController : MonoBehaviour
 
         if (!anim.GetBool("isDead"))
         {
+            Debug.Log(Stunned);
+            Debug.Log (StunnedReload);
             float distance = Vector3.Distance(transform.position, player.position);
             
             //Find the direction
@@ -53,6 +56,7 @@ public class BossController : MonoBehaviour
             //Set a random value between a range we set to choose our attack type.
             if (canAttack == true && attackType == 0 && !PlayerHealth.singleton.isDead)
             {
+                
                 attackType = 2;
                 //attackType = Random.Range(1, attackRange + 1);
                 if(distance < 20f) 
@@ -62,8 +66,10 @@ public class BossController : MonoBehaviour
                 }
                 
             }
+            
+            
+            
            
-       
         }
         else
         {
@@ -139,18 +145,8 @@ public class BossController : MonoBehaviour
             
         }
     }
-    void WeakSpots()
-    {
-        
-        leftweak = GameObject.FindWithTag("LeftHand");
-        rightweak = GameObject.FindWithTag("RightHand");
-        
-    }
-    public void Close()
-    {
-        leftweak.gameObject.SetActive(false);
-        rightweak.gameObject.SetActive(false);
-    }
+    
+  
     void AttackPlayer()
     {   
         anim.SetBool("isStunned", false);

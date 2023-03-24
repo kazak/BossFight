@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UIElements;
 
 
 public class WeakSpot : MonoBehaviour
@@ -9,8 +10,10 @@ public class WeakSpot : MonoBehaviour
     private void Start()
     {
         recGO = transform.root.gameObject;
+
         bossHealth = recGO.GetComponent<BossHealth>();
     }
+   
 
 
     public void OnCollisionEnter(Collision col)

@@ -15,9 +15,11 @@ public class BossHealth : MonoBehaviour
 
     public Slider slider;
     public Text text;
-  
+    public float StunnedReload;
+    private bool Stunned = false;
 
-    
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +32,7 @@ public class BossHealth : MonoBehaviour
         text.text = $"{health}/{maxhealth}";
         slider.maxValue = maxhealth;
         slider.value = health;
-
+        
         //Debug.Log(health);
         
         if (health <= 0)
@@ -38,6 +40,28 @@ public class BossHealth : MonoBehaviour
             health = 0; 
             anim.SetBool("isDead", true);
             
+        }
+        if (StunnedReload > 0)
+        {
+            StunnedReload -= Time.deltaTime;
+            Stunned = false;
+            anim.SetBool("Stunned", false);
+           
+        }
+
+        //если хотим стан
+        if (StunnedReload <= 0.03f)
+        {
+            StunnedReload = 0.1f;  //интервал стана
+            Stunned = true;
+
+            anim.SetBool("Stunned", true);
+            if (anim.GetBool("Stunned"))
+
+            {
+               
+            }
+                
         }
     }
 
@@ -65,7 +89,13 @@ public class BossHealth : MonoBehaviour
         }
     }
 
-    
+    public void WeakSpot()
+    {
+        if (mutantMesh != null && health > 0)
+        {
+            StartCoroutine(HitFlash(0));
+        }
+    }
 
 
     private void OnCollisionEnter(Collision other)

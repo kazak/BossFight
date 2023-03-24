@@ -44,7 +44,7 @@ public class EnemyShoot : MonoBehaviour
         transform.rotation = Quaternion.Slerp(target.rotation, Quaternion.LookRotation(direction), turnspeed * Time.deltaTime);
 
 
-        Debug.Log(distance);
+        //Debug.Log(distance);
         
         if (distance > 5 && distance < 20 && slider.value >0 )
         {
