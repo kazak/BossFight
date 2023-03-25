@@ -29,6 +29,10 @@ public class BossHealth : MonoBehaviour
 
     public void Update()
     {
+        Debug.Log(Stunned);
+        Debug.Log(StunnedReload);
+        WeakSpotEnable();
+        WeakSpotEnableRight();
         text.text = $"{health}/{maxhealth}";
         slider.maxValue = maxhealth;
         slider.value = health;
@@ -41,33 +45,30 @@ public class BossHealth : MonoBehaviour
             anim.SetBool("isDead", true);
             
         }
+        
+    }
+
+    public void FixedUpdate()
+    {
         if (StunnedReload > 0)
         {
             StunnedReload -= Time.deltaTime;
             Stunned = false;
             anim.SetBool("Stunned", false);
-           
+
         }
-
         //если хотим стан
-        if (StunnedReload <= 0.03f)
+        else if (StunnedReload <= 0.01f)
         {
-            StunnedReload = 0.1f;  //интервал стана
+            StunnedReload = 0.3f;  //интервал стана
             Stunned = true;
-
+            
             anim.SetBool("Stunned", true);
-            if (anim.GetBool("Stunned"))
 
-            {
-               
-            }
-                
         }
     }
 
-    
-    
-   
+
 
     public void ReceiveCollision(ref Collision col, ref string name)
     {
@@ -89,13 +90,29 @@ public class BossHealth : MonoBehaviour
         }
     }
 
-    public void WeakSpot()
+    public void WeakSpotEnable()
     {
-        if (mutantMesh != null && health > 0)
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            StartCoroutine(HitFlash(0));
+            if (mutantMesh != null)
+            {
+                StartCoroutine(WeakSpots(1));
+                
+            }
         }
     }
+    public void WeakSpotEnableRight()
+    {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (mutantMesh != null)
+            {
+                StartCoroutine(WeakSpots(0));
+                
+            }
+        }
+    }
+
 
 
     private void OnCollisionEnter(Collision other)
@@ -111,6 +128,30 @@ public class BossHealth : MonoBehaviour
 
 
     private IEnumerator HitFlash(int num)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            mutantMesh.GetComponent<Renderer>().material.SetTexture("_EmissionMap", texture[num]);
+            mutantMesh.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+            yield return new WaitForSeconds(0.1f);
+            mutantMesh.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return null;
+    }
+    private IEnumerator WeakSpots(int num)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+        mutantMesh.GetComponent<Renderer>().material.SetTexture("_EmissionMap", texture[num]);
+        mutantMesh.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.red);
+        yield return new WaitForSeconds(0.1f);
+        mutantMesh.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
+        yield return new WaitForSeconds(0.1f);
+        }
+        yield return null;
+    }
+    private IEnumerator WeakSpotsRight(int num)
     {
         for (int i = 0; i < 5; i++)
         {

@@ -36,13 +36,12 @@ public class BossController : MonoBehaviour
 
     private void Update()
     {
-        LavaEnable();
-        LavaDisable();
+        //LavaEnable();
+        // LavaDisable();
 
         if (!anim.GetBool("isDead"))
         {
-            Debug.Log(Stunned);
-            Debug.Log (StunnedReload);
+            
             float distance = Vector3.Distance(transform.position, player.position);
             
             //Find the direction
@@ -67,9 +66,6 @@ public class BossController : MonoBehaviour
                 
             }
             
-            
-            
-           
         }
         else
         {
