@@ -6,21 +6,39 @@ using UnityEngine;
 
 public class Wall: MonoBehaviour
 {
-    
+    public float StartPos;
+    public float EndPos;
     public float Speed = 0.11f;
+    //≈сли true - по оси X 
+    public bool AxisXZ; 
 
     private void Update()
-    {
-        if (transform.position.x >= 10)
+    {   if (AxisXZ == true) //движение по оси X
         {
-            Speed = -Speed;
+            if (transform.position.x >= StartPos)
+            {
+                Speed = -Speed;
+            }
+            if (transform.position.x <= EndPos)
+            {
+                Speed = -Speed;
+            }
+            Vector3 input = new Vector3(1, 0, 0);
+            transform.position = transform.position + input * Time.deltaTime * Speed;
         }
-        if (transform.position.x <= -10)
+        if (AxisXZ == false) //  движение по оси Z
         {
-            Speed = -Speed;
-        }
-        Vector3 input = new Vector3(1, 0, 0);
-        transform.position = transform.position + input * Time.deltaTime * Speed;
+            if (transform.position.z >= StartPos)
+            {
+                Speed = -Speed;
+            }
+            if (transform.position.z <= EndPos)
+            {
+                Speed = -Speed;
+            }
+            Vector3 input = new Vector3(0, 0, 1);
+            transform.position = transform.position + input * Time.deltaTime * Speed;
+        }   
     }
 
     private void FixedUpdate()
