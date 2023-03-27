@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class EnemyShoot : MonoBehaviour
 {
+    public AudioSource AudioShoot;
     [SerializeField]
     GameObject projectile;
 
@@ -46,20 +47,23 @@ public class EnemyShoot : MonoBehaviour
 
         //Debug.Log(distance);
         
-        if (distance > 5 && distance < 20 && slider.value >0 )
+        if (distance > 5 && distance < 50 && slider.value >0 )
         {
             if (fireRate <= 0)
             {
-                fireRate = 5f;
+                fireRate = 6f;
                 Shoot();
+                AudioShoot.Play();
             }
 
         }
     }
 
     void Shoot() 
-    { 
+    {   
+        
         Instantiate (projectile,shootPoint.position,shootPoint.rotation);
+        
     }
 }
 

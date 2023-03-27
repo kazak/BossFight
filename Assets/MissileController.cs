@@ -11,6 +11,7 @@ public class MissileController : MonoBehaviour
     public Image damageImage;
     public Color damageColor;
     float colorSmoothing = 6f;
+    public AudioSource RocketFly;
     public enum Missile_state
     {
         idle,
@@ -43,7 +44,7 @@ public class MissileController : MonoBehaviour
         bools = GetComponent<MeshRenderer>();
         bools.enabled = false;
 
-       
+      
         switch (missile_state_t)
             {
                 case Missile_state.idle:
@@ -57,6 +58,7 @@ public class MissileController : MonoBehaviour
                     
                    break;
                 case Missile_state.start:
+                    
                     bools.enabled = true;
                     float start_dist = Vector3.Distance(gameObject.transform.position, start_pos);
                     gameObject.transform.Translate(Vector3.up * speed_move * Time.deltaTime);
@@ -71,28 +73,36 @@ public class MissileController : MonoBehaviour
                     break;
 
                 case Missile_state.fly:
+
                     bools.enabled = true;
                     gameObject.transform.Translate(Vector3.up * speed_move * Time.deltaTime);
                     Vector3 target_vector = target.transform.position - gameObject.transform.position;
                     gameObject.transform.up = Vector3.Slerp(gameObject.transform.up, target_vector, speed_rotate * Time.deltaTime);
-
-                    if (target_vector.magnitude < 1)
+                    
+                if (target_vector.magnitude < 1)
                     {
                         missile_state_t = Missile_state.end;
+                        
                     }
-
+                    
                     break;
 
                 case Missile_state.end:
-                    Instantiate(explosive, gameObject.transform.position, Quaternion.identity);
+                
+                Instantiate(explosive, gameObject.transform.position, Quaternion.identity);
                     bools.enabled = true;
-                     PlayerHealth.singleton.PlayerDamage(damageAmount);
-                     damageImage.color = damageColor;
+                    PlayerHealth.singleton.PlayerDamage(damageAmount);
+                    damageImage.color = damageColor;
                     Destroy(gameObject);
-                    
                     break;
             }
+
+            
         }
+    private void FixedUpdate()
+    {
         
     }
+
+}
 

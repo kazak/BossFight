@@ -6,7 +6,7 @@ public class CharacterMovement : MonoBehaviour
     public float jumpPower = 4;
     Rigidbody rb;
     CapsuleCollider col;
-
+    public AudioSource moveSound;
     // Use this for initialization
     void Start()
     {
@@ -34,6 +34,7 @@ public class CharacterMovement : MonoBehaviour
 
         if (Input.GetKeyDown("escape"))
             Cursor.lockState = CursorLockMode.None;
+        SoundSteps();
     }
 
     private bool isGrounded()
@@ -41,6 +42,19 @@ public class CharacterMovement : MonoBehaviour
         //Test that we are grounded by drawing an invisible line (raycast)
         //If this hits a solid object e.g. floor then we are grounded.
         return Physics.Raycast(transform.position, Vector3.down, col.bounds.extents.y + 0.1f);
+    }
+    public void SoundSteps ()
+    {
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.35f && Mathf.Abs(Input.GetAxis("Vertical")) > 0.35f)
+        {
+            if (moveSound.isPlaying) return;
+            moveSound.pitch = Random.Range(0.9f, 1.1f);
+            moveSound.Play();
+        }
+        else
+        {
+            moveSound.Stop();
+        }
     }
 }
 

@@ -36,6 +36,7 @@ Transform:
   - {fileID: 6808717948907687663}
   - {fileID: 8449763263888546}
   - {fileID: 4730068413838825311}
+  - {fileID: 4465688653137314520}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -136,6 +137,7 @@ MonoBehaviour:
   exhaust: {fileID: 3963825614360282658, guid: 0155775aa593a4b409a4c6620029c1bb, type: 3}
   damageImage: {fileID: 5321780806854919239}
   damageColor: {r: 1, g: 0, b: 0, a: 0.4627451}
+  RocketFly: {fileID: 0}
   missile_state_t: 0
   speed_move: 5
   speed_rotate: 10
@@ -258,6 +260,36 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &5214841128062689388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4465688653137314520}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4465688653137314520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5214841128062689388}
+  m_LocalRotation: {x: 0.00000008078812, y: -0.12820426, z: -0.000000010443564, w: 0.9917478}
+  m_LocalPosition: {x: -0.00000021616981, y: 0.12965202, z: -0.000000035715818}
+  m_LocalScale: {x: 10.000001, y: 10, z: 10.000001}
+  m_Children: []
+  m_Father: {fileID: 4057985939578142}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8459376855845059937
 GameObject:
   m_ObjectHideFlags: 0

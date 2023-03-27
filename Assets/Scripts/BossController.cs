@@ -24,7 +24,7 @@ public class BossController : MonoBehaviour
     float attackTime = 2f;
     public float StunnedReload;
     BossHealth bossHealth = new BossHealth();
-
+    public AudioSource LavaSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +36,8 @@ public class BossController : MonoBehaviour
 
     private void Update()
     {
-        //LavaEnable();
-        // LavaDisable();
+        LavaEnable();
+         LavaDisable();
 
         if (!anim.GetBool("isDead"))
         {
@@ -167,15 +167,16 @@ public class BossController : MonoBehaviour
     }
     public void LavaEnable()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             lava.SetActive(true);
+            LavaSource.Play();
         }
         
     }
     public void LavaDisable()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.O))
         {
             lava.SetActive(false);
         }

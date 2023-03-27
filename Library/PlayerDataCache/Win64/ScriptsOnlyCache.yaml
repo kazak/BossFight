@@ -29,10 +29,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -81,6 +79,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 90
@@ -100,59 +102,59 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1822}
     - Class: 114
-      Script: {instanceID: 2272}
+      Script: {instanceID: 2274}
     - Class: 114
-      Script: {instanceID: 2326}
+      Script: {instanceID: 2328}
     - Class: 114
-      Script: {instanceID: 2416}
+      Script: {instanceID: 2418}
     - Class: 114
-      Script: {instanceID: 2542}
+      Script: {instanceID: 2544}
     - Class: 114
-      Script: {instanceID: 2882}
+      Script: {instanceID: 2884}
     - Class: 114
-      Script: {instanceID: 2888}
+      Script: {instanceID: 2890}
     - Class: 114
-      Script: {instanceID: 2986}
+      Script: {instanceID: 2988}
     - Class: 114
-      Script: {instanceID: 3064}
+      Script: {instanceID: 3066}
     - Class: 114
-      Script: {instanceID: 3286}
+      Script: {instanceID: 3290}
     - Class: 114
-      Script: {instanceID: 3352}
+      Script: {instanceID: 3356}
     - Class: 114
-      Script: {instanceID: 3486}
-    - Class: 114
-      Script: {instanceID: 3640}
+      Script: {instanceID: 3490}
     - Class: 114
       Script: {instanceID: 3644}
     - Class: 114
-      Script: {instanceID: 3734}
+      Script: {instanceID: 3648}
     - Class: 114
-      Script: {instanceID: 3974}
+      Script: {instanceID: 3738}
     - Class: 114
-      Script: {instanceID: 4060}
+      Script: {instanceID: 3978}
     - Class: 114
-      Script: {instanceID: 4104}
+      Script: {instanceID: 4064}
     - Class: 114
-      Script: {instanceID: 4656}
+      Script: {instanceID: 4108}
     - Class: 114
-      Script: {instanceID: 5184}
+      Script: {instanceID: 4660}
     - Class: 114
-      Script: {instanceID: 5358}
+      Script: {instanceID: 5188}
     - Class: 114
-      Script: {instanceID: 5380}
+      Script: {instanceID: 5362}
     - Class: 114
-      Script: {instanceID: 5424}
+      Script: {instanceID: 5384}
     - Class: 114
-      Script: {instanceID: 5530}
+      Script: {instanceID: 5428}
     - Class: 114
-      Script: {instanceID: 5640}
+      Script: {instanceID: 5534}
     - Class: 114
-      Script: {instanceID: 5960}
+      Script: {instanceID: 5644}
     - Class: 114
-      Script: {instanceID: 6146}
+      Script: {instanceID: 5964}
     - Class: 114
-      Script: {instanceID: 6316}
+      Script: {instanceID: 6150}
+    - Class: 114
+      Script: {instanceID: 6320}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -292,13 +294,19 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
+      Hash: 20240431c815058690a3ba9bdfb91802
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraFreeflight
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: GroupTrack
   - hash:
       serializedVersion: 2
-      Hash: 689e9ea8e04960f5e9d68033593730ac
+      Hash: 3f70b8e64e044d45e17634868ea858c9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerHealth
@@ -430,7 +438,7 @@ ScriptsOnlyBuild:
     className: Placeholder
   - hash:
       serializedVersion: 2
-      Hash: ee0cd01e87c98dab43614c3ba3d277cc
+      Hash: ca134cd8e10b8f5dc65ae1f533b43e17
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MissileController
@@ -574,7 +582,7 @@ ScriptsOnlyBuild:
     className: ContentSizeFitter
   - hash:
       serializedVersion: 2
-      Hash: 13beea75c789d8643f455f847f42e3af
+      Hash: a23c7f27b31b74feb3b3e63757650fa3
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EnemyShoot
@@ -820,19 +828,19 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
-      Hash: 625cc8a94c1246c05e6fbb5d9d7bd4c3
+      Hash: 38ecb643b8ef2f0f43fc0ecbac464b46
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BossController
   - hash:
       serializedVersion: 2
-      Hash: 838fcacdea13fa3d763491c800b8e6ae
+      Hash: 3aab9027d5a040529380234c9d077ca9
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CharacterMovement
   - hash:
       serializedVersion: 2
-      Hash: 152538b8026845c9c446c16cecdde311
+      Hash: 935a59433b9c0aaa210649565142e4f7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ActivateProjectile
@@ -904,7 +912,7 @@ ScriptsOnlyBuild:
     className: Demo
   - hash:
       serializedVersion: 2
-      Hash: 6217b1600703adb64b60a10b41711cab
+      Hash: 5b144515bce58935996b230d35e8f881
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: BossHealth
@@ -952,7 +960,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 5e882a14f5a04c3dbf1dd9f3fd491094
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Wall

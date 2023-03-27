@@ -18,6 +18,7 @@ public class PlayerHealth : MonoBehaviour
     public Image damageImage;
     float colorSmoothing =6f;
     bool isTakingDamage = false;
+    public AudioSource damageAudioSource;
    
     private void Awake()
     {
@@ -37,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
     {   if(isTakingDamage)
         {
             damageImage.color = damageColor;
-
+            damageAudioSource.Play();
         }
         else
         {

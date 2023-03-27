@@ -11,6 +11,7 @@ public class Wall: MonoBehaviour
     public float Speed = 0.11f;
     //Если true - по оси X 
     public bool AxisXZ; 
+    public AudioSource AudioSource;
 
     private void Update()
     {   if (AxisXZ == true) //движение по оси X
@@ -48,6 +49,7 @@ public class Wall: MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {      
         Destroy(GameObject.FindGameObjectWithTag("bullet"));
+        AudioSource.Play();
     }
     
 }
